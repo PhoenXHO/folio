@@ -90,7 +90,7 @@ Core interactions a user performs in the builder.
 3. All responsive styles adjust accordingly
 4. The `activeBreakpoint` is stored so style edits target the right breakpoint
 
-## Reusable Components
+## Reusable Components (Pro)
 
 ### Save as Component
 1. Select a section (or subtree)

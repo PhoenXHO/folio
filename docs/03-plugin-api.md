@@ -123,7 +123,9 @@ const builder = createBuilder({
 </builder.Provider>
 ```
 
-## Reusable Components (Pro Feature)
+## Reusable Components
+
+> **Pro Feature** — Part of `@phoenxho/folio-pro`. The core package provides the extension API; the pro package implements it.
 
 Users can save a section configuration as a reusable component:
 
@@ -140,3 +142,30 @@ interface ReusableComponent {
 ```
 
 This is registered as a new component definition dynamically. It appears in the palette alongside built-in components.
+
+### Extension API (Core)
+
+The core package exposes hooks for pro features to plug into:
+
+```ts
+interface ProExtension {
+  // Reusable components
+  registerReusableComponent(component: ReusableComponent): void;
+  onComponentSave(callback: (component: ReusableComponent) => void): void;
+
+  // Collaboration
+  onTreeChange(callback: (tree: BuilderNode[]) => void): void;
+  broadcastPresence(userId: string, cursor: { x: number; y: number }): void;
+
+  // Export
+  exportToHTML(tree: BuilderNode[]): string;
+  exportToReact(tree: BuilderNode[]): string;
+
+  // Version history
+  saveVersion(label: string): void;
+  listVersions(): VersionEntry[];
+  restoreVersion(id: string): void;
+}
+```
+
+The pro package implements this interface and registers itself with the core via `createBuilder({ pro: folioPro })`.

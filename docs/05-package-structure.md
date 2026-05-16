@@ -120,3 +120,32 @@ import "@phoenxho/folio/styles.css";
 ## Versioning
 
 Semantic versioning. Breaking changes to the plugin API are major versions. New component types or features are minor. Bug fixes are patch.
+
+## Pro Package (Private Repo)
+
+Separate repo, published as `@phoenxho/folio-pro`. Extends the core via the `ProExtension` API.
+
+```
+folio-pro/
+├── src/
+│   ├── reusable/       # Save, fork, share components
+│   ├── collab/         # Multi-user editing
+│   ├── export/         # HTML, CSS, React code generation
+│   ├── integrations/   # CMS connectors
+│   ├── history/        # Advanced version control
+│   └── index.ts
+├── package.json
+├── tsup.config.ts
+└── README.md
+```
+
+Host apps that purchased pro:
+```ts
+import { createBuilder } from "@phoenxho/folio";
+import { folioPro } from "@phoenxho/folio-pro";
+
+const builder = createBuilder({
+  ...config,
+  pro: folioPro({ licenseKey: "..." }),
+});
+```
