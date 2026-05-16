@@ -43,3 +43,4 @@ Pre-release. Specifications in progress.
 - [03 — Plugin API](docs/03-plugin-api.md)
 - [04 — User Flows](docs/04-user-flows.md)
 - [05 — Package Structure](docs/05-package-structure.md)
+- [06 — Roadmap](docs/06-roadmap.md)
